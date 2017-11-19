@@ -15,18 +15,25 @@
 </v>
 <v t="yen.20170429110328.1" a="E"><vh>Installation</vh>
 <v t="yen.20170429110336.1"><vh>Ubuntu 14.04</vh></v>
+<v t="leo.20171119233721.1"><vh>Windows</vh></v>
+<v t="leo.20171119233845.1"><vh>fontspec error</vh></v>
 </v>
 <v t="40323230.20170123213451.1"><vh>@button Report pdf</vh></v>
+<v t="leo.20171119234847.1" a="E"><vh>章節順序</vh>
 <v t="yen.20170429220829.1"><vh>@edit chapter.py</vh></v>
+</v>
 <v t="yen.20170429132400.1"><vh>協同著作規劃</vh></v>
 <v t="yen.20170429103742.1" a="E"><vh>@path ./../</vh>
 <v t="yen.20170429103940.1" a="E"><vh>@path markdown</vh>
 <v t="40323230.20170130135731.1"><vh>@edit template.tex</vh></v>
 <v t="ahshoe.20170322182713.1"><vh>@edit reference.md</vh></v>
 <v t="ahshoe.20170322181453.1"><vh>@edit refer.bib</vh></v>
-<v t="ahshoe.20161120122151.1" a="E"><vh>@clean cover_and_abstract.md</vh>
+<v t="leo.20171119234752.1"><vh>封面以及摘要</vh>
+<v t="ahshoe.20161120122151.1"><vh>@clean cover_and_abstract.md</vh>
 <v t="ahshoe.20170317115820.1"><vh>摘要</vh></v>
 </v>
+</v>
+<v t="leo.20171119234822.1" a="E"><vh>各章節內容</vh>
 <v t="yen.20170429214845.1" a="E"><vh>@path paragraph</vh>
 <v t="yen.20170429214838.1"><vh>@clean computer_hardware.md</vh>
 <v t="yen.20170429214838.3"><vh>電腦硬體</vh></v>
@@ -69,8 +76,9 @@
 <v t="yen.20170429220650.1"><vh>@clean pyduino.md</vh></v>
 </v>
 </v>
+</v>
 <v t="ahshoe.20170129120932.1" a="E"><vh>Readme</vh>
-<v t="ahshoe.20170129120858.1"><vh>@edit ../README.md</vh></v>
+<v t="ahshoe.20170129120858.1"><vh>@edit README.md</vh></v>
 </v>
 </v>
 </vnodes>
@@ -82,11 +90,11 @@ import chapter
 os.chdir("./../markdown")
 
 if platform.system().lower()=="linux": font = "ukai.ttc"
-elif platform.system().lower()=="windows": font = "DFKai-SB"
+elif platform.system().lower()=="windows": font = "SimSun"
 else: font = "Arial"
 fontsize = "12"
 margin = "1in"
-settingFlag = "--latex-engine=xelatex -V lang=chinese -N --toc --highlight-style kate -V documentclass=report  --filter pandoc-fignos --filter pandoc-tablenos --template=template.tex -V \"CJKmainfont:{0}\" -V fontsize={1}pt -V geometry:margin={2} --bibliography=refer.bib --csl=ieee.csl".format(font, fontsize, margin)
+settingFlag = "--pdf-engine=xelatex -V lang=zh-TW -N --toc --highlight-style kate -V documentclass=report  --filter pandoc-fignos --filter pandoc-tablenos --template=template.tex -V \"CJKmainfont:{0}\" -V fontsize={1}pt -V geometry:margin={2} --bibliography=refer.bib --csl=ieee.csl".format(font, fontsize, margin)
 print("---Pandoc---")
 
 # get chapter sequence
@@ -96,7 +104,7 @@ for i in chapter.sequence():
     
 g.es(chapter_list)
 
-os.system("pandoc cover_and_abstract.md " + chapter_list + " reference.md -o ../pdf/report.pdf {}".format(settingFlag))
+g.es("pandoc cover_and_abstract.md " + chapter_list + " reference.md -o ../pdf/report.pdf {}".format(settingFlag))
 g.es("PDF 轉換完畢")
 print('-'*12)</t>
 <t tx="ahshoe.20161120121808.1"></t>
@@ -202,6 +210,19 @@ abstract: |
 ---
 
 </t>
+<t tx="leo.20171119233721.1">1. 下載可攜pandoc-2.0.2與 miktex_portable
+
+2. 安裝 pandoc-fignos, pandoc-tablenos filters
+
+python -m pip install pandoc-fignos pandoc-tablenos
+
+3. 若需要安裝 package, 需要用 administrator 身分啟動
+
+c:\users\cadlab\desktop\mde\python2017fall_36\data\miktex_portable\miktex-portable.cmd</t>
+<t tx="leo.20171119233845.1">https://sourceforge.net/p/miktex/discussion/33790/thread/fcf98fa1/</t>
+<t tx="leo.20171119234752.1"></t>
+<t tx="leo.20171119234822.1"></t>
+<t tx="leo.20171119234847.1"></t>
 <t tx="yen.20170429103742.1"></t>
 <t tx="yen.20170429103940.1"></t>
 <t tx="yen.20170429110328.1"></t>
