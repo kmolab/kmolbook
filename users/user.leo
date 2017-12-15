@@ -9,20 +9,14 @@
 <preferences/>
 <find_panel_settings/>
 <vnodes>
-<v t="ahshoe.20161120121808.1" a="E"><vh>@settings</vh>
+<v t="ahshoe.20161120121808.1"><vh>@settings</vh>
 <v t="ahshoe.20170315212615.1"><vh>@data qt-gui-plugin-style-sheet</vh></v>
 <v t="ahshoe.20170315212626.1"><vh>@string initial_split_orientation = horizontal</vh></v>
-</v>
-<v t="yen.20170429110328.1" a="E"><vh>Installation</vh>
-<v t="yen.20170429110336.1"><vh>Ubuntu 14.04</vh></v>
-<v t="leo.20171119233721.1"><vh>Windows</vh></v>
-<v t="leo.20171119233845.1"><vh>fontspec error</vh></v>
 </v>
 <v t="40323230.20170123213451.1"><vh>@button Report pdf</vh></v>
 <v t="yen.20170429132400.1"><vh>協同著作規劃</vh></v>
 <v t="yen.20170429103742.1" a="E"><vh>@path ./../</vh>
 <v t="yen.20170429103940.1" a="E"><vh>@path markdown</vh>
-<v t="40323230.20170130135731.1"><vh>@edit template.tex</vh></v>
 <v t="ahshoe.20170322182713.1"><vh>@edit reference.md</vh></v>
 <v t="ahshoe.20170322181453.1"><vh>@edit refer.bib</vh></v>
 <v t="leo.20171119234752.1" a="E"><vh>封面以及摘要</vh>
@@ -32,18 +26,18 @@
 </v>
 <v t="leo.20171119234822.1" a="E"><vh>各章節內容</vh>
 <v t="yen.20170429214845.1" a="E"><vh>@path paragraph</vh>
-<v t="yen.20170429214838.1" a="E"><vh>@clean computer_hardware.md</vh>
+<v t="yen.20170429214838.1"><vh>@clean computer_hardware.md</vh>
 <v t="yen.20170429214838.3"><vh>電腦硬體</vh></v>
 </v>
-<v t="yen.20170429215041.1" a="E"><vh>@clean operating_system.md</vh>
+<v t="yen.20170429215041.1"><vh>@clean operating_system.md</vh>
 <v t="yen.20170429215130.1"><vh>Windows</vh></v>
 <v t="yen.20170429215205.1"><vh>Ubuntu</vh></v>
 </v>
-<v t="yen.20170429215252.1" a="E"><vh>@clean computer_network.md</vh>
+<v t="yen.20170429215252.1"><vh>@clean computer_network.md</vh>
 <v t="yen.20170429215308.1"><vh>IPv4</vh></v>
 <v t="yen.20170429215316.1"><vh>IPv6</vh></v>
 </v>
-<v t="yen.20170429215416.1" a="E"><vh>@clean computer_programming.md</vh>
+<v t="yen.20170429215416.1"><vh>@clean computer_programming.md</vh>
 <v t="yen.20170429215446.2"><vh>C</vh></v>
 <v t="yen.20170429215446.3"><vh>Python</vh></v>
 <v t="yen.20170429215446.4"><vh>Brython</vh></v>
@@ -54,7 +48,7 @@
 <v t="yen.20170429215830.1"><vh>機械系統模擬</vh></v>
 <v t="yen.20170429215802.1"><vh>演化運算</vh></v>
 </v>
-<v t="yen.20170429215922.1" a="E"><vh>@clean leo_editor.md</vh>
+<v t="yen.20170429215922.1"><vh>@clean leo_editor.md</vh>
 <v t="yen.20170429220001.1"><vh>Scripting</vh></v>
 </v>
 <v t="yen.20170429220128.1"><vh>@clean github.md</vh>
@@ -68,9 +62,6 @@
 </v>
 </v>
 </v>
-</v>
-<v t="ahshoe.20170129120932.1" a="E"><vh>Readme</vh>
-<v t="ahshoe.20170129120858.1"><vh>@edit README.md</vh></v>
 </v>
 </v>
 </vnodes>
@@ -94,7 +85,7 @@ margin = "1in"
 # -V lang=zh-cmn 為一組 key=value 對應的 Variable 設定
 # -N 表示 Number section headings in LaTeX, ConTeXt, HTML, or EPUB output. By default, sections are not numbered.
 settingFlag = "--pdf-engine=xelatex -V lang=zh-cmn -N --toc --highlight-style kate -V documentclass=report  --filter pandoc-fignos --filter pandoc-tablenos --template=template.tex -V \"CJKmainfont:{0}\" -V fontsize={1}pt -V geometry:margin={2} --bibliography=refer.bib --csl=ieee.csl".format(font, fontsize, margin)
-print("---Pandoc---")
+g.es("---Pandoc---")
 
 # 選擇所要納入的 Markdown 檔案, 不納入的檔案名稱前方加上  # 即可
 chapter_list = " ".join("./paragraph/" + i for i in [
@@ -117,9 +108,10 @@ chapter_list = " ".join("./paragraph/" + i for i in [
 # 若系統並未正確轉檔, 可以將 os.system 改為 g.es 表示要使用 Leo Editor 的 global 物件中的 echo string 將指令印在 log 區
 # 然後複製指令, 然後在命令列視窗中的 markdown 目錄中執行, 就可以得到錯誤訊息
 # 或許可以再從 https://stackoverflow.com/questions/26005583/return-value-of-x-os-system 中的建議改進此一指令
-os.system("pandoc cover_and_abstract.md " + chapter_list + " reference.md -o ../pdf/report.pdf {}".format(settingFlag))
+g.es(os.system("pandoc cover_and_abstract.md " + chapter_list + " reference.md -o ../pdf/report.pdf {}".format(settingFlag)))
+g.es("pandoc cover_and_abstract.md " + chapter_list + " reference.md -o ../pdf/report.pdf {}".format(settingFlag))
 g.es("PDF 轉換完畢")
-print('-'*12)</t>
+g.es('-'*12)</t>
 <t tx="ahshoe.20161120121808.1"></t>
 <t tx="ahshoe.20161120122151.1">---
 university_zh: '國立虎尾科技大學'
@@ -128,17 +120,17 @@ category_zh: '電腦輔助設計實習 bg1 期末報告'
 title_zh: '機電資鋼珠循環運動系統設計與製作'
 title_en: 'Design and Manufacturing of an Infomechatronic Marble Machine Project'
 author:
-- 設計二乙 秦九韶 同學
-- 設計二乙 李治 同學
-- 設計二乙 楊輝 同學
-- 設計二乙 朱世傑 同學
+- 設計二丙 1731001 孫寶琦
+- 設計二丙 1731007 洪仁玕
+- 設計二丙 1731025 岑春煊
+- 設計二丙 1731051 瞿鴻禨
+- 設計二丙 1731061 何子淵
 advisor_zh: 'Dr. Scrum'
 date: '2017.12.15'
 ---
 
 @others
 </t>
-<t tx="ahshoe.20170129120932.1"></t>
 <t tx="ahshoe.20170315212615.1">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
     background-color: #ffffec; /* Leo's traditional tree color */
@@ -221,43 +213,20 @@ abstract: |
     + 以 YAML 的方式插入。
     + The '+' indicator says to keep newlines at the end of text blocks.
     + 使用 Markdown 語法。
+    + 前面使用加號
     
     本研究的重點在於 ...
 ---
 
 
 </t>
-<t tx="leo.20171119233721.1">1. 下載可攜pandoc-2.0.2與 miktex_portable
-
-2. 安裝 pandoc-fignos, pandoc-tablenos filters
-
-python -m pip install pandoc-fignos pandoc-tablenos
-
-3. 若需要安裝 package, 需要用 administrator 身分啟動
-
-c:\users\cadlab\desktop\mde\python2017fall_36\data\miktex_portable\miktex-portable.cmd</t>
-<t tx="leo.20171119233845.1">https://sourceforge.net/p/miktex/discussion/33790/thread/fcf98fa1/</t>
 <t tx="leo.20171119234752.1"></t>
 <t tx="leo.20171119234822.1"></t>
 <t tx="yen.20170429103742.1"></t>
 <t tx="yen.20170429103940.1"></t>
-<t tx="yen.20170429110328.1"></t>
-<t tx="yen.20170429110336.1">1. 下載並安裝 Pandoc：
-
-https://github.com/jgm/pandoc/releases/
-
-2. 安裝 texlive (安裝 texlive-lang-cjk 而非 16.04 的 texlive-lang-chinese)
-
-sudo apt install texlive texlive-xetex texlive-lang-cjk etoolbox
-
-3. 安裝 pandoc-fignos, pandoc-tablenos filters
-
-sudo pip3 install pandoc-fignos pandoc-tablenos
-
-4. 安裝 ukai.ttc 字型
-
-sudo apt-get install fonts-arphic-ukai</t>
 <t tx="yen.20170429132400.1">每一位協同人員各在 users 目錄中建立一個 .leo 檔案
+
+各自選擇要編輯的 .md 檔案, 可以使用 @edit 或 @clean 節點編輯指令
 
 除非必要否則不更動 markdown 目錄下的 template.tex 檔案</t>
 <t tx="yen.20170429214838.1">電腦硬體

@@ -4,7 +4,7 @@ def sequence():
     return  [
 #"computer_hardware.md", 
 "operating_system.md", 
-#"computer_network.md", 
+"computer_network.md", 
 "computer_programming.md", 
 "computer_aided_design.md", 
 "leo_editor.md", 
